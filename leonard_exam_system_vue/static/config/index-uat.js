@@ -5,7 +5,7 @@
   window.SITE_CONFIG = {};
 
   // api接口请求地址
-  window.SITE_CONFIG['baseUrl'] = 'http://106.12.217.254:9000/renren-fast';
+  window.SITE_CONFIG['baseUrl'] = 'http://106.12.217.254:9000/exam_system';
   /*window.SITE_CONFIG['baseUrl'] = 'http://demo.renren.io/renren-fast';*/
 
   // cdn地址 = 域名 + 版本号
