@@ -22,9 +22,12 @@
     <el-form-item label="证件号" prop="idCardNo">
       <el-input v-model="dataForm.idCardNo" placeholder="证件号"></el-input>
     </el-form-item>
-    <el-form-item label="状态" prop="status">
-      <el-input v-model="dataForm.status" placeholder="状态"></el-input>
-    </el-form-item>
+      <el-form-item label="状态" size="mini" prop="status">
+        <el-radio-group v-model="dataForm.status">
+          <el-radio :label="0">禁用</el-radio>
+          <el-radio :label="1">正常</el-radio>
+        </el-radio-group>
+      </el-form-item>
     <el-form-item label="备注" prop="remark">
       <el-input v-model="dataForm.remark" placeholder="备注"></el-input>
     </el-form-item>
@@ -71,6 +74,9 @@
           ],
           idCardNo: [
             { required: true, message: '证件号不能为空', trigger: 'blur' }
+          ],
+          status: [
+            { required: true, message: '状态必填', trigger: 'blur' }
           ]
         }
       }

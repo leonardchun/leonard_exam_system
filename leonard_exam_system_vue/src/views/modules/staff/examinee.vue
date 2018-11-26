@@ -38,30 +38,35 @@
         prop="number"
         header-align="center"
         align="center"
+        width="150"
         label="考生账号">
       </el-table-column>
       <el-table-column
         prop="departId"
         header-align="center"
         align="center"
+        width="150"
         label="所属部门">
       </el-table-column>
       <el-table-column
         prop="email"
         header-align="center"
         align="center"
+        width="150"
         label="邮箱">
       </el-table-column>
       <el-table-column
         prop="mobile"
         header-align="center"
         align="center"
+        width="150"
         label="手机号">
       </el-table-column>
       <el-table-column
         prop="idCardNo"
         header-align="center"
         align="center"
+        width="150"
         label="证件号">
       </el-table-column>
       <el-table-column
@@ -74,6 +79,7 @@
         prop="remark"
         header-align="center"
         align="center"
+        width="150"
         label="备注">
       </el-table-column>
       <el-table-column
@@ -86,12 +92,14 @@
         prop="createTime"
         header-align="center"
         align="center"
+        width="150"
         label="创建时间">
       </el-table-column>
       <el-table-column
         prop="updateTime"
         header-align="center"
         align="center"
+        width="150"
         label="修改时间">
       </el-table-column>
       <el-table-column
