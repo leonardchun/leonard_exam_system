@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import io.renren.common.utils.ConfigConstant;
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
+import io.renren.modules.message.config.EmailConfig;
 import io.renren.modules.message.entity.EmailTemplateEntity;
 import io.renren.modules.message.service.EmailTemplateService;
 import io.renren.modules.oss.cloud.CloudStorageConfig;
@@ -102,7 +103,7 @@ public class EmailTemplateController {
     @GetMapping("/config")
     @RequiresPermissions("message:emailtemplate:all")
     public R config() {
-        CloudStorageConfig config = sysConfigService.getConfigObject(KEY, CloudStorageConfig.class);
+        EmailConfig config = sysConfigService.getConfigObject(KEY, EmailConfig.class);
 
         return R.ok().put("config", config);
     }
@@ -112,7 +113,7 @@ public class EmailTemplateController {
      */
     @PostMapping("/saveConfig")
     @RequiresPermissions("message:emailtemplate:all")
-    public R saveConfig(@RequestBody CloudStorageConfig config) {
+    public R saveConfig(@RequestBody EmailConfig config) {
        /* //校验类型
         ValidatorUtils.validateEntity(config);
 
