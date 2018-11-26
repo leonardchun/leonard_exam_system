@@ -7,6 +7,7 @@
       <el-form-item>
         <el-button @click="getDataList()">查询</el-button>
         <el-button v-if="isAuth('message:emailtemplate:save')" type="primary" @click="addOrUpdateHandle()">新增</el-button>
+        <el-button type="primary" @click="addEmailConfigHandle()">邮件配置</el-button>
         <el-button v-if="isAuth('message:emailtemplate:delete')" type="danger" @click="deleteHandle()" :disabled="dataListSelections.length <= 0">批量删除</el-button>
       </el-form-item>
     </el-form>
@@ -85,12 +86,15 @@
       :total="totalPage"
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
+    <!-- 弹窗, 邮件配置 -->
+    <config v-if="configEmailVisible" ref="config"></config>
     <!-- 弹窗, 新增 / 修改 -->
     <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
   </div>
 </template>
 
 <script>
+  import Config from './emailtemplate-config'
   import AddOrUpdate from './emailtemplate-add-or-update'
   export default {
     data () {
@@ -104,11 +108,13 @@
         totalPage: 0,
         dataListLoading: false,
         dataListSelections: [],
-        addOrUpdateVisible: false
+        addOrUpdateVisible: false,
+        configEmailVisible: false
       }
     },
     components: {
-      AddOrUpdate
+      AddOrUpdate,
+      Config
     },
     activated () {
       this.getDataList()
@@ -156,6 +162,13 @@
         this.addOrUpdateVisible = true
         this.$nextTick(() => {
           this.$refs.addOrUpdate.init(id)
+        })
+      },
+      // 邮件配置
+      addEmailConfigHandle (id) {
+        this.configEmailVisible = true
+        this.$nextTick(() => {
+          this.$refs.config.init(id)
         })
       },
       // 删除

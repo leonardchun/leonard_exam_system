@@ -4,15 +4,20 @@ import java.util.Arrays;
 import java.util.Date;
 import java.util.Map;
 
+import com.google.gson.Gson;
+import io.renren.common.utils.ConfigConstant;
+import io.renren.common.utils.Constant;
+import io.renren.common.validator.ValidatorUtils;
+import io.renren.common.validator.group.AliyunGroup;
+import io.renren.common.validator.group.QcloudGroup;
+import io.renren.common.validator.group.QiniuGroup;
 import io.renren.modules.message.entity.EmailTemplateEntity;
 import io.renren.modules.message.service.EmailTemplateService;
+import io.renren.modules.oss.cloud.CloudStorageConfig;
+import io.renren.modules.sys.service.SysConfigService;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
@@ -28,8 +33,14 @@ import io.renren.common.utils.R;
 @RestController
 @RequestMapping("message/emailtemplate")
 public class EmailTemplateController {
+
+    private final static String KEY = ConfigConstant.EMAIL_CONFIG_KEY;
+
     @Autowired
     private EmailTemplateService emailTemplateService;
+
+    @Autowired
+    private SysConfigService sysConfigService;
 
     /**
      * 列表
@@ -89,5 +100,43 @@ public class EmailTemplateController {
 
         return R.ok();
     }
+
+
+    /**
+     * 邮件配置信息
+     */
+    @GetMapping("/config")
+    @RequiresPermissions("message:emailtemplate:all")
+    public R config() {
+        CloudStorageConfig config = sysConfigService.getConfigObject(KEY, CloudStorageConfig.class);
+
+        return R.ok().put("config", config);
+    }
+
+    /**
+     * 保存邮件配置信息
+     */
+    @PostMapping("/saveConfig")
+    @RequiresPermissions("message:emailtemplate:all")
+    public R saveConfig(@RequestBody CloudStorageConfig config) {
+       /* //校验类型
+        ValidatorUtils.validateEntity(config);
+
+        if (config.getType() == Constant.CloudService.QINIU.getValue()) {
+            //校验七牛数据
+            ValidatorUtils.validateEntity(config, QiniuGroup.class);
+        } else if (config.getType() == Constant.CloudService.ALIYUN.getValue()) {
+            //校验阿里云数据
+            ValidatorUtils.validateEntity(config, AliyunGroup.class);
+        } else if (config.getType() == Constant.CloudService.QCLOUD.getValue()) {
+            //校验腾讯云数据
+            ValidatorUtils.validateEntity(config, QcloudGroup.class);
+        }*/
+
+        sysConfigService.updateValueByKey(KEY, new Gson().toJson(config));
+
+        return R.ok();
+    }
+
 
 }

@@ -7,8 +7,14 @@ package io.renren.common.utils;
  * @date 2017-03-26 10:33
  */
 public class ConfigConstant {
+
     /**
      * 云存储配置KEY
      */
     public final static String CLOUD_STORAGE_CONFIG_KEY = "CLOUD_STORAGE_CONFIG_KEY";
+
+    /**
+     * 邮件配置KEY
+     */
+    public final static String EMAIL_CONFIG_KEY = "EMAIL_CONFIG_KEY";
 }
