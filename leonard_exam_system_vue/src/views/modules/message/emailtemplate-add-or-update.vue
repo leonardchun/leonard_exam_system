@@ -60,9 +60,7 @@
               method: 'get',
               params: this.$http.adornParams()
             }).then(({data}) => {
-              alert(data.emailtemplate.emailName)
               if (data && data.code === 0) {
-                alert(data.emailtemplate.emailName)
                 this.dataForm.emailName = data.emailtemplate.emailName
                 this.dataForm.emailTheme = data.emailtemplate.emailTheme
                 this.dataForm.emailContent = data.emailtemplate.emailContent
