@@ -33,46 +33,52 @@
         prop="emailName"
         header-align="center"
         align="center"
+        width="150"
         label="邮件名称">
       </el-table-column>
       <el-table-column
         prop="emailTheme"
         header-align="center"
         align="center"
+        width="150"
         label="邮件主题">
       </el-table-column>
       <el-table-column
         prop="emailContent"
         header-align="center"
         align="center"
+        width="300"
         label="邮件内容">
       </el-table-column>
       <el-table-column
         prop="createUserId"
         header-align="center"
         align="center"
-        label="创建者ID">
+        label="创建者">
       </el-table-column>
       <el-table-column
         prop="createTime"
         header-align="center"
         align="center"
+        width="150"
         label="创建时间">
       </el-table-column>
       <el-table-column
         prop="updateTime"
         header-align="center"
         align="center"
+        width="150"
         label="修改时间">
       </el-table-column>
       <el-table-column
         fixed="right"
         header-align="center"
         align="center"
-        width="150"
+        width="200"
         label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
+          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">发送邮件</el-button>
           <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
