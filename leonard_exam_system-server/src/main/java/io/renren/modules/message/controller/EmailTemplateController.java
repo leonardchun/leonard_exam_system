@@ -1,16 +1,9 @@
 package io.renren.modules.message.controller;
 
-import java.util.Arrays;
-import java.util.Date;
-import java.util.Map;
-
 import com.google.gson.Gson;
 import io.renren.common.utils.ConfigConstant;
-import io.renren.common.utils.Constant;
-import io.renren.common.validator.ValidatorUtils;
-import io.renren.common.validator.group.AliyunGroup;
-import io.renren.common.validator.group.QcloudGroup;
-import io.renren.common.validator.group.QiniuGroup;
+import io.renren.common.utils.PageUtils;
+import io.renren.common.utils.R;
 import io.renren.modules.message.entity.EmailTemplateEntity;
 import io.renren.modules.message.service.EmailTemplateService;
 import io.renren.modules.oss.cloud.CloudStorageConfig;
@@ -19,8 +12,9 @@ import org.apache.shiro.authz.annotation.RequiresPermissions;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import io.renren.common.utils.PageUtils;
-import io.renren.common.utils.R;
+import java.util.Arrays;
+import java.util.Date;
+import java.util.Map;
 
 
 /**
