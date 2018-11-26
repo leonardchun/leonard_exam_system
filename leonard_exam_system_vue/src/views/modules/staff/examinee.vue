@@ -26,7 +26,7 @@
         prop="id"
         header-align="center"
         align="center"
-        label="">
+        label="ID">
       </el-table-column>
       <el-table-column
         prop="name"
@@ -45,12 +45,6 @@
         header-align="center"
         align="center"
         label="所属部门">
-      </el-table-column>
-      <el-table-column
-        prop="password"
-        header-align="center"
-        align="center"
-        label="密码">
       </el-table-column>
       <el-table-column
         prop="email"
@@ -74,7 +68,7 @@
         prop="status"
         header-align="center"
         align="center"
-        label="状态  0：禁用   1：正常">
+        label="状态">
       </el-table-column>
       <el-table-column
         prop="remark"
@@ -86,7 +80,7 @@
         prop="createUserId"
         header-align="center"
         align="center"
-        label="创建者ID">
+        label="创建者">
       </el-table-column>
       <el-table-column
         prop="createTime"

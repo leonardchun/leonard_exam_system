@@ -13,9 +13,6 @@
     <el-form-item label="所属部门" prop="departId">
       <el-input v-model="dataForm.departId" placeholder="所属部门"></el-input>
     </el-form-item>
-    <el-form-item label="密码" prop="password">
-      <el-input v-model="dataForm.password" placeholder="密码"></el-input>
-    </el-form-item>
     <el-form-item label="邮箱" prop="email">
       <el-input v-model="dataForm.email" placeholder="邮箱"></el-input>
     </el-form-item>
@@ -25,20 +22,11 @@
     <el-form-item label="证件号" prop="idCardNo">
       <el-input v-model="dataForm.idCardNo" placeholder="证件号"></el-input>
     </el-form-item>
-    <el-form-item label="状态  0：禁用   1：正常" prop="status">
-      <el-input v-model="dataForm.status" placeholder="状态  0：禁用   1：正常"></el-input>
+    <el-form-item label="状态" prop="status">
+      <el-input v-model="dataForm.status" placeholder="状态"></el-input>
     </el-form-item>
     <el-form-item label="备注" prop="remark">
       <el-input v-model="dataForm.remark" placeholder="备注"></el-input>
-    </el-form-item>
-    <el-form-item label="创建者ID" prop="createUserId">
-      <el-input v-model="dataForm.createUserId" placeholder="创建者ID"></el-input>
-    </el-form-item>
-    <el-form-item label="创建时间" prop="createTime">
-      <el-input v-model="dataForm.createTime" placeholder="创建时间"></el-input>
-    </el-form-item>
-    <el-form-item label="修改时间" prop="updateTime">
-      <el-input v-model="dataForm.updateTime" placeholder="修改时间"></el-input>
     </el-form-item>
     </el-form>
     <span slot="footer" class="dialog-footer">
@@ -64,9 +52,6 @@
           idCardNo: '',
           status: '',
           remark: '',
-          createUserId: '',
-          createTime: '',
-          updateTime: ''
         },
         dataRule: {
           name: [
@@ -78,9 +63,6 @@
           departId: [
             { required: true, message: '所属部门不能为空', trigger: 'blur' }
           ],
-          password: [
-            { required: true, message: '密码不能为空', trigger: 'blur' }
-          ],
           email: [
             { required: true, message: '邮箱不能为空', trigger: 'blur' }
           ],
@@ -89,21 +71,6 @@
           ],
           idCardNo: [
             { required: true, message: '证件号不能为空', trigger: 'blur' }
-          ],
-          status: [
-            { required: true, message: '状态  0：禁用   1：正常不能为空', trigger: 'blur' }
-          ],
-          remark: [
-            { required: true, message: '备注不能为空', trigger: 'blur' }
-          ],
-          createUserId: [
-            { required: true, message: '创建者ID不能为空', trigger: 'blur' }
-          ],
-          createTime: [
-            { required: true, message: '创建时间不能为空', trigger: 'blur' }
-          ],
-          updateTime: [
-            { required: true, message: '修改时间不能为空', trigger: 'blur' }
           ]
         }
       }
@@ -130,9 +97,6 @@
                 this.dataForm.idCardNo = data.examinee.idCardNo
                 this.dataForm.status = data.examinee.status
                 this.dataForm.remark = data.examinee.remark
-                this.dataForm.createUserId = data.examinee.createUserId
-                this.dataForm.createTime = data.examinee.createTime
-                this.dataForm.updateTime = data.examinee.updateTime
               }
             })
           }
@@ -156,9 +120,7 @@
                 'idCardNo': this.dataForm.idCardNo,
                 'status': this.dataForm.status,
                 'remark': this.dataForm.remark,
-                'createUserId': this.dataForm.createUserId,
-                'createTime': this.dataForm.createTime,
-                'updateTime': this.dataForm.updateTime
+
               })
             }).then(({data}) => {
               if (data && data.code === 0) {

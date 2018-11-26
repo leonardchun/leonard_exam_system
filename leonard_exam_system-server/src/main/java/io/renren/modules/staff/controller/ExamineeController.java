@@ -1,6 +1,7 @@
 package io.renren.modules.staff.controller;
 
 import java.util.Arrays;
+import java.util.Date;
 import java.util.Map;
 
 import io.renren.modules.staff.entity.ExamineeEntity;
@@ -15,7 +16,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import io.renren.common.utils.PageUtils;
 import io.renren.common.utils.R;
-
 
 
 /**
@@ -36,7 +36,7 @@ public class ExamineeController {
      */
     @RequestMapping("/list")
     @RequiresPermissions("staff:examinee:list")
-    public R list(@RequestParam Map<String, Object> params){
+    public R list(@RequestParam Map<String, Object> params) {
         PageUtils page = examineeService.queryPage(params);
 
         return R.ok().put("page", page);
@@ -48,8 +48,8 @@ public class ExamineeController {
      */
     @RequestMapping("/info/{id}")
     @RequiresPermissions("staff:examinee:info")
-    public R info(@PathVariable("id") Long id){
-			ExamineeEntity examinee = examineeService.selectById(id);
+    public R info(@PathVariable("id") Long id) {
+        ExamineeEntity examinee = examineeService.selectById(id);
 
         return R.ok().put("examinee", examinee);
     }
@@ -58,9 +58,12 @@ public class ExamineeController {
      * 保存
      */
     @RequestMapping("/save")
-    @RequiresPermissions("generator:examinee:save")
-    public R save(@RequestBody ExamineeEntity examinee){
-			examineeService.insert(examinee);
+    @RequiresPermissions("staff:examinee:save")
+    public R save(@RequestBody ExamineeEntity examinee) {
+
+        examinee.setCreateTime(new Date());
+        examinee.setUpdateTime(new Date());
+        examineeService.insert(examinee);
 
         return R.ok();
     }
@@ -70,9 +73,9 @@ public class ExamineeController {
      */
     @RequestMapping("/update")
     @RequiresPermissions("staff:examinee:update")
-    public R update(@RequestBody ExamineeEntity examinee){
-			examineeService.updateById(examinee);
-
+    public R update(@RequestBody ExamineeEntity examinee) {
+        examinee.setUpdateTime(new Date());
+        examineeService.updateById(examinee);
         return R.ok();
     }
 
@@ -81,8 +84,8 @@ public class ExamineeController {
      */
     @RequestMapping("/delete")
     @RequiresPermissions("staff:examinee:delete")
-    public R delete(@RequestBody Long[] ids){
-			examineeService.deleteBatchIds(Arrays.asList(ids));
+    public R delete(@RequestBody Long[] ids) {
+        examineeService.deleteBatchIds(Arrays.asList(ids));
 
         return R.ok();
     }
