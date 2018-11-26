@@ -54,7 +54,7 @@
           mobile: '',
           idCardNo: '',
           status: '',
-          remark: '',
+          remark: ''
         },
         dataRule: {
           name: [
@@ -125,7 +125,7 @@
                 'mobile': this.dataForm.mobile,
                 'idCardNo': this.dataForm.idCardNo,
                 'status': this.dataForm.status,
-                'remark': this.dataForm.remark,
+                'remark': this.dataForm.remark
 
               })
             }).then(({data}) => {
