@@ -30,10 +30,7 @@
           id: 0,
           emailName: '',
           emailTheme: '',
-          emailContent: '',
-          createUserId: '',
-          createTime: '',
-          updateTime: ''
+          emailContent: ''
         },
         dataRule: {
           emailName: [
@@ -62,7 +59,7 @@
             }).then(({data}) => {
               if (data && data.code === 0) {
                 this.dataForm.emailName = data.emailtemplate.emailName
-                this.dataForm.emailTheme = data.emailtemplate.emailTheme
+                this.dataForm.emailTheme = data.emailtemplate.emailName
                 this.dataForm.emailContent = data.emailtemplate.emailContent
               }
             })

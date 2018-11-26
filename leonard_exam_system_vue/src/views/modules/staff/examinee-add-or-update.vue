@@ -93,6 +93,7 @@
               method: 'get',
               params: this.$http.adornParams()
             }).then(({data}) => {
+              debugger;
               if (data && data.code === 0) {
                 this.dataForm.name = data.examinee.name
                 this.dataForm.number = data.examinee.number

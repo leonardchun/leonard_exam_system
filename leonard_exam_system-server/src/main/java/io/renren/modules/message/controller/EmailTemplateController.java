@@ -51,7 +51,7 @@ public class EmailTemplateController {
     public R info(@PathVariable("id") Long id) {
         EmailTemplateEntity emailTemplate = emailTemplateService.selectById(id);
 
-        return R.ok().put("emailTemplate", emailTemplate);
+        return R.ok().put("emailtemplate", emailTemplate);
     }
 
     /**
