@@ -72,7 +72,7 @@
         label="操作">
         <template slot-scope="scope">
           <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">修改</el-button>
-          <el-button type="text" size="small" @click="addOrUpdateHandle(scope.row.id)">发送邮件</el-button>
+          <el-button type="text" size="small" @click="sendEmailHandle(scope.row.id)">发送邮件</el-button>
           <el-button type="text" size="small" @click="deleteHandle(scope.row.id)">删除</el-button>
         </template>
       </el-table-column>
@@ -86,8 +86,11 @@
       :total="totalPage"
       layout="total, sizes, prev, pager, next, jumper">
     </el-pagination>
+
     <!-- 弹窗, 邮件配置 -->
     <config v-if="configEmailVisible" ref="config"></config>
+    <!-- 弹窗, 发送邮件 -->
+    <send-email v-if="sendEmailVisible" ref="sendEmail"></send-email>
     <!-- 弹窗, 新增 / 修改 -->
     <add-or-update v-if="addOrUpdateVisible" ref="addOrUpdate" @refreshDataList="getDataList"></add-or-update>
   </div>
@@ -95,6 +98,7 @@
 
 <script>
   import Config from './emailtemplate-config'
+  import SendEmail from './emailtemplate-send-email'
   import AddOrUpdate from './emailtemplate-add-or-update'
   export default {
     data () {
@@ -109,11 +113,13 @@
         dataListLoading: false,
         dataListSelections: [],
         addOrUpdateVisible: false,
+        sendEmailVisible: false,
         configEmailVisible: false
       }
     },
     components: {
       AddOrUpdate,
+      SendEmail,
       Config
     },
     activated () {
@@ -169,6 +175,13 @@
         this.configEmailVisible = true
         this.$nextTick(() => {
           this.$refs.config.init(id)
+        })
+      },
+      // 发送邮件
+      sendEmailHandle (id) {
+        this.sendEmailVisible = true
+        this.$nextTick(() => {
+          this.$refs.sendEmail.init(id)
         })
       },
       // 删除
