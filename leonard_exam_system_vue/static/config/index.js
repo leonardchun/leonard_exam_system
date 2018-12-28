@@ -5,7 +5,8 @@
   window.SITE_CONFIG = {};
 
   // api接口请求地址
-  window.SITE_CONFIG['baseUrl'] = 'http://106.12.217.254:9000/exam_system';
+  //window.SITE_CONFIG['baseUrl'] = 'http://106.12.217.254:9000/exam_system';
+  window.SITE_CONFIG['baseUrl'] = 'http://localhost:9000/exam_system';
 
   // cdn地址 = 域名 + 版本号
   window.SITE_CONFIG['domain']  = './'; // 域名
