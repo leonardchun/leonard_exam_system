@@ -1,8 +1,8 @@
 swagger: '2.0'
 info:
-  description: 基础开发平台，可以快速迭代
+  description: Leonard开发平台，可以快速迭代
   version: 1.0.0
-  title: 基础开发平台
+  title: Leonard开发平台
 
 basePath: /renren-fast
 

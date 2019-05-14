@@ -3,7 +3,7 @@
  */
 ;(function() {
   var resList = {
-    icon: window.SITE_CONFIG.cdnUrl + '/static/img/yooxi-logo.png',
+    icon: window.SITE_CONFIG.cdnUrl + '/static/img/logo.png',
     css: [
       window.SITE_CONFIG.cdnUrl + '/static/css/app.css',
     ],
